@@ -8,7 +8,9 @@ import sys
 # 動態偵測 ffmpeg 路徑與字型路徑
 if sys.platform.startswith("win"):
     FONT_PATH = r"C:/Windows/Fonts/arial.ttf"
-    FFMPEG_EXE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "bin", "ffmpeg.exe")
+    FFMPEG_EXE = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "..", "..", "bin", "ffmpeg.exe"
+    )
 else:
     # Linux/macOS: 假設 ffmpeg 已在 PATH，字型用常見的 DejaVuSans
     FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"

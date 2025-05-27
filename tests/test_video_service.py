@@ -37,12 +37,16 @@ def test_cut_calls_cut_video(mock_cut):
     out = video_service.VideoService.cut(
         "in.mp4", "out.mp4", "00:00:01", "00:00:10"
     )
-    mock_cut.assert_called_once_with("in.mp4", "out.mp4", "00:00:01", "00:00:10")
+    mock_cut.assert_called_once_with(
+        "in.mp4", "out.mp4", "00:00:01", "00:00:10"
+    )
     assert out == "out.mp4"
 
 
 @patch("app.services.video_service.compress_video")
 def test_compress_calls_compress_video(mock_compress):
     out = video_service.VideoService.compress("in.mp4", "out.mp4", 27)
-    mock_compress.assert_called_once_with("in.mp4", "out.mp4", 27)
+    mock_compress.assert_called_once_with(
+        "in.mp4", "out.mp4", 27
+    )
     assert out == "out.mp4"
