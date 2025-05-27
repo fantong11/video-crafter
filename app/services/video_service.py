@@ -5,6 +5,7 @@ from app.utils.add_timestamp import add_timestamp_to_video
 class VideoService:
     @staticmethod
     def add_timestamp(input_path, output_path, filename):
+        print(f"[DEBUG] filename: {filename}", flush=True)
         ts_epoch = extract_epoch(filename)
         if not ts_epoch:
             raise ValueError('Invalid filename format')
