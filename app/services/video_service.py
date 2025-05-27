@@ -9,7 +9,7 @@ class VideoService:
         print(f"[DEBUG] filename: {filename}", flush=True)
         ts_epoch = extract_epoch(filename)
         if not ts_epoch:
-            raise ValueError('Invalid filename format')
+            raise ValueError("Invalid filename format")
         _, epoch = ts_epoch
         add_timestamp_to_video(input_path, output_path, epoch)
         return output_path

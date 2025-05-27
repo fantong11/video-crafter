@@ -9,7 +9,11 @@ import sys
 if sys.platform.startswith("win"):
     FONT_PATH = r"C:/Windows/Fonts/arial.ttf"
     FFMPEG_EXE = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "..", "..", "bin", "ffmpeg.exe"
+        os.path.dirname(os.path.abspath(__file__)),
+        "..",
+        "..",
+        "bin",
+        "ffmpeg.exe",
     )
 else:
     # Linux/macOS: 假設 ffmpeg 已在 PATH，字型用常見的 DejaVuSans
@@ -31,11 +35,16 @@ def cut_video(src: str, dst: str, start: str, end: str):
     cmd = [
         FFMPEG_EXE,
         "-y",
-        "-ss", start,
-        "-to", end,
-        "-i", src,
-        "-c:v", "libx264",
-        "-c:a", "aac",
+        "-ss",
+        start,
+        "-to",
+        end,
+        "-i",
+        src,
+        "-c:v",
+        "libx264",
+        "-c:a",
+        "aac",
         dst,
     ]
     subprocess.run(cmd, check=True)
@@ -45,11 +54,16 @@ def compress_video(src: str, dst: str, crf: int = 28):
     cmd = [
         FFMPEG_EXE,
         "-y",
-        "-i", src,
-        "-vcodec", "libx264",
-        "-crf", str(crf),
-        "-preset", "medium",
-        "-acodec", "aac",
+        "-i",
+        src,
+        "-vcodec",
+        "libx264",
+        "-crf",
+        str(crf),
+        "-preset",
+        "medium",
+        "-acodec",
+        "aac",
         dst,
     ]
     subprocess.run(cmd, check=True)

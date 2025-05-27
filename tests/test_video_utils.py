@@ -3,10 +3,10 @@ from app.utils import video_utils
 
 
 def test_extract_epoch_valid():
-    result = video_utils.extract_epoch(
-        "DJI_20250527080625_0180_D.MP4"
-    )
-    assert result is not None, "extract_epoch returned None for a valid filename"
+    result = video_utils.extract_epoch("DJI_20250527080625_0180_D.MP4")
+    assert (
+        result is not None
+    ), "extract_epoch returned None for a valid filename"
     ts, epoch = result
     assert ts == "2025-05-27 08:06:25"
     assert isinstance(epoch, int)

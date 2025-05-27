@@ -14,9 +14,12 @@ def add_timestamp_to_video(src: str, dst: str, epoch: int):
     cmd = [
         FFMPEG_EXE,
         "-y",
-        "-i", src,
-        "-vf", vf,
-        "-codec:a", "copy",
+        "-i",
+        src,
+        "-vf",
+        vf,
+        "-codec:a",
+        "copy",
         dst,
     ]
     subprocess.run(cmd, check=True)
