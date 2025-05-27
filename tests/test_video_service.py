@@ -31,19 +31,13 @@ def test_add_timestamp_invalid(monkeypatch):
 
     monkeypatch.setattr(video_service, "extract_epoch", fake_extract_epoch)
     with pytest.raises(ValueError):
-        video_service.VideoService.add_timestamp(
-            "in.mp4", "out.mp4", "bad.mp4"
-        )
+        video_service.VideoService.add_timestamp("in.mp4", "out.mp4", "bad.mp4")
 
 
 @patch("app.services.video_service.cut_video")
 def test_cut_calls_cut_video(mock_cut):
-    out = video_service.VideoService.cut(
-        "in.mp4", "out.mp4", "00:00:01", "00:00:10"
-    )
-    mock_cut.assert_called_once_with(
-        "in.mp4", "out.mp4", "00:00:01", "00:00:10"
-    )
+    out = video_service.VideoService.cut("in.mp4", "out.mp4", "00:00:01", "00:00:10")
+    mock_cut.assert_called_once_with("in.mp4", "out.mp4", "00:00:01", "00:00:10")
     assert out == "out.mp4"
 
 
