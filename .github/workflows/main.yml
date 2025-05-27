@@ -2,9 +2,9 @@ name: Main Workflow
 
 on:
   push:
-    branches: [develop, release]
+    branches: [develop, release, master]
   pull_request:
-    branches: [develop, release]
+    branches: [develop, release, master]
   release:
     types: [published]
 
