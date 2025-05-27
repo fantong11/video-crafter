@@ -14,6 +14,7 @@ else:
     FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     FFMPEG_EXE = "ffmpeg"
 
+
 def extract_epoch(filename: str):
     m = re.search(r"DJI_(\d{14})_", filename)
     if not m:
@@ -22,6 +23,7 @@ def extract_epoch(filename: str):
     ts_str = f"{dt[:4]}-{dt[4:6]}-{dt[6:8]} {dt[8:10]}:{dt[10:12]}:{dt[12:14]}"
     epoch = int(time.mktime(time.strptime(ts_str, "%Y-%m-%d %H:%M:%S")))
     return ts_str, epoch
+
 
 def cut_video(src: str, dst: str, start: str, end: str):
     cmd = [
@@ -35,6 +37,7 @@ def cut_video(src: str, dst: str, start: str, end: str):
         dst,
     ]
     subprocess.run(cmd, check=True)
+
 
 def compress_video(src: str, dst: str, crf: int = 28):
     cmd = [

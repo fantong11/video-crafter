@@ -21,6 +21,7 @@ class ApiResponse:
             'message': message
         })
 
+
 def register_routes(app):
     @app.route('/add_timestamp', methods=['POST'])
     def api_add_timestamp():
@@ -64,7 +65,8 @@ def register_routes(app):
         except ValueError as e:
             return ApiResponse.fail(str(e)), 400
         # 回傳下載連結
-        return ApiResponse.success({'output': output_path, 'download_url': f"/download?path={output_path}"})
+        return ApiResponse.success({'output': output_path,
+                                   'download_url': f"/download?path={output_path}"})
 
     @app.route('/download')
     def download_file():
@@ -129,7 +131,8 @@ def register_routes(app):
         end_safe = end.replace(':', '_')
         out_path = src.replace('.mp4', f'_cut_{start_safe}_{end_safe}.mp4')
         VideoService.cut(src, out_path, start, end)
-        return ApiResponse.success({'output': out_path, 'download_url': f"/download?path={out_path}"})
+        return ApiResponse.success({'output': out_path,
+                                   'download_url': f"/download?path={out_path}"})
 
     @app.route('/compress', methods=['POST'])
     def api_compress():
@@ -169,7 +172,8 @@ def register_routes(app):
             return ApiResponse.fail('Missing src'), 400
         out_path = src.replace('.mp4', '_compressed.mp4')
         VideoService.compress(src, out_path, crf)
-        return ApiResponse.success({'output': out_path, 'download_url': f"/download?path={out_path}"})
+        return ApiResponse.success({'output': out_path,
+                                   'download_url': f"/download?path={out_path}"})
 
     @app.route('/docs')
     def swagger_ui():

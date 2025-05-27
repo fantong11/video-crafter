@@ -2,6 +2,7 @@
 import subprocess
 from app.utils.video_utils import FONT_PATH, FFMPEG_EXE
 
+
 def add_timestamp_to_video(src: str, dst: str, epoch: int):
     vf = (
         f"drawtext="

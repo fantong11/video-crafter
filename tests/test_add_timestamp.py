@@ -1,6 +1,6 @@
-import pytest
 from unittest.mock import patch
 from app.utils import add_timestamp
+
 
 def test_add_timestamp_to_video_calls_subprocess():
     src = "input.mp4"

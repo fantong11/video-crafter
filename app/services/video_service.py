@@ -2,6 +2,7 @@
 from app.utils.video_utils import extract_epoch, cut_video, compress_video
 from app.utils.add_timestamp import add_timestamp_to_video
 
+
 class VideoService:
     @staticmethod
     def add_timestamp(input_path, output_path, filename):
