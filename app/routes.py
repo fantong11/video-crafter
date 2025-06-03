@@ -177,7 +177,11 @@ def register_routes(app):
         """
         data = request.get_json()
         src = data.get("src")
-        crf = int(data.get("crf", 28))
+        crf_value = data.get("crf", 28)
+        try:
+            crf = int(crf_value)
+        except (TypeError, ValueError):
+            return ApiResponse.fail("Invalid crf"), 400
         if not src:
             return ApiResponse.fail("Missing src"), 400
         out_path = src.replace(".mp4", "_compressed.mp4")
